@@ -95,6 +95,7 @@ public class SolutionOne : MonoBehaviour
         int totalHP = 0;
         int hitDie = classHitDice[characterClass];
         int conModifier = (constitutionScore - 10) / 2;
+        level = Mathf.Clamp(level, 1, 20);
 
         for (int i = 1; i <= level; i++)
         {
@@ -121,7 +122,7 @@ public class SolutionOne : MonoBehaviour
 
             totalHP += raceHpBonus[race];
 
-
+            
             if (hasTough)
                 totalHP += 2;
 
