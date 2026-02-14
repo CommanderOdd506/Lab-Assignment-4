@@ -3,47 +3,19 @@ using UnityEngine;
 
 public class SolutionOne : MonoBehaviour
 {
-    /*
-    PSEUDOCODE:
-
-    Create dictionaries for class hit dice and race HP bonuses
-    Read character info from inspector
-    Calculate Constitution modifier
-    totalHP = 0
-
-    for each level from 1 to character level
-        if level == 1
-            Add max hit die
-        else
-            if averaged
-                Add expected value of hit die
-            else
-                Roll hit die randomly
-
-        Add Constitution modifier
-        Add race HP bonus
-        Add Tough/Stout feat bonuses
-
-    - Output character description and total HP
-    */
-
-    [Header("Character Info")]
     public string characterName;
     public int level;
     public string characterClass;
     public int constitutionScore;
     public string race;
-
-    [Header("Feats")]
     public bool hasTough;
     public bool hasStout;
-
-    [Header("HP Calculation")]
     public bool useAveraged; 
 
     Dictionary<string, int> classHitDice;
     Dictionary<string, int> raceHpBonus;
 
+    //Input
     void Start()
     {
         classHitDice = new Dictionary<string, int>()
@@ -133,6 +105,7 @@ public class SolutionOne : MonoBehaviour
         PrintResult(totalHP);
     }
 
+    //Output
     void PrintResult(int totalHP)
     {
         string featText = "has no feats";
@@ -153,13 +126,6 @@ public class SolutionOne : MonoBehaviour
 
         string calcType = useAveraged ? "averaged" : "rolled";
 
-        Debug.Log(
-            "My character " + characterName +
-            " is a level " + level + " " + characterClass +
-            " with a CON score of " + constitutionScore +
-            " and is of " + race + " race, " + featText +
-            ". I want the HP " + calcType +
-            ". Total HP = " + totalHP
-        );
+        Debug.Log("My character " + characterName + " is a level " + level + " " + characterClass + " with a CON score of " + constitutionScore + " and is of " + race + " race, " + featText + ". I want the HP " + calcType + ". Total HP = " + totalHP);
     }
 }
